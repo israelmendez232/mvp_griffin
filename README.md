@@ -1,2 +1,2 @@
-# mvp_griffin
-Small project using Adonis, Node and React.
+# Griffingram
+Small project and personal using Express, Node and React.
