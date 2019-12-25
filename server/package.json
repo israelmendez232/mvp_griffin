@@ -1,32 +1,27 @@
 {
-  "name": "mvp-griffin",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Small project using React, Node and Adonis.",
+  "name": "server_griffingram",
+  "version": "1.0.0",
+  "description": "Small project using Node, Express and React.",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon ./app.js --exec babel-node -e js",
-    "debug": "DEBUG=mvp-griffin:* npm start"
+    "start": "npx nodemon --exec npx babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "React",
+    "node",
+    "express",
+    "telegram"
+  ],
+  "author": "Israel Mendes",
+  "license": "ISC",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1",
-    "nodemon": "^2.0.2",
-    "pg-promise": "^10.3.1",
-    "uglify-js": "^3.7.2"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
-  },
-  "autoload": {
-    "App": "./app"
+    "nodemon": "^2.0.2"
   }
 }
