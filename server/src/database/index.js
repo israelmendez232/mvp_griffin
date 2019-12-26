@@ -4,7 +4,7 @@ import User from '../models/User';
 
 const connection = new Sequelize(dbConfig);
 
-// Users
+// Connections
 User.init(connection);
 
 module.exports = connection;

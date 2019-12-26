@@ -3,9 +3,9 @@ import UserController from '../controllers/UserController';
 
 const routes = express.Router();
 
-routes.get('/users', (req, res) => {
-    return res.json({ hello: 'world' });
-});
+// Users
+routes.get('/user/:email', UserController.findOne);
+routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
 module.exports = routes;
