@@ -15,7 +15,9 @@ git pull origin master
 cd client/
 npm install
 npm run-script build
+rm -r ../server/src/build
 mv -f build ../server/src/
+rm -r build
 
 ## RUN THE SERVER
 cd ../server/

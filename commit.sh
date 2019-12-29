@@ -8,4 +8,5 @@ git commit -m "$1"
 git push origin master:master
 
 ## comment this line if you don't want to send into the server.
-node server/deploy.js 
+cd server/
+node deploy.js 
