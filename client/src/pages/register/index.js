@@ -5,21 +5,17 @@ import { Redirect, Link } from 'react-router-dom'
 import { Container, Row, Col, Card, CardBody, Label, FormGroup, Button, Alert } from 'reactstrap';
 import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
 
-import { loginUser } from '../../redux/actions';
+import { registerUser } from '../../redux/actions';
 import { isUserAuthenticated } from '../../services/authUtils';
 import Loader from '../../global_components/Loader';
 
-class Login extends Component {
+class Register extends Component {
     _isMounted = false;
 
     constructor(props) {
         super(props);
 
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
-        this.state = {
-            username: 'test',
-            password: 'test'
-        }
     }
 
     componentDidMount() {
@@ -36,9 +32,8 @@ class Login extends Component {
      * Handles the submit
      */
     handleValidSubmit = (event, values) => {
-        this.props.loginUser(values.username, values.password, this.props.history);
+        this.props.registerUser(values.fullname, values.email, values.password);
     }
-
 
     /**
      * Redirect to root
@@ -50,9 +45,23 @@ class Login extends Component {
         }
     }
 
+    /**
+     * Redirect to confirm
+     */
+    renderRedirectToConfirm = () => {
+        return <Redirect to='/confirm' />;
+    }
+
     render() {
+        const isAuthTokenValid = isUserAuthenticated();
         return (
             <React.Fragment>
+
+                {this.renderRedirectToRoot()}
+
+                {Object.keys(this.props.user || {}).length > 0 && this.renderRedirectToConfirm()}
+
+                {(this._isMounted || !isAuthTokenValid) && <React.Fragment>
 
                     <div className="home-btn d-none d-sm-block">
                         <Link to="/"><i className="fas fa-home h2 text-dark"></i></Link>
@@ -62,18 +71,20 @@ class Login extends Component {
                         <Container>
                             <Row className="justify-content-center">
                                 <Col md={8} lg={6} xl={5} >
+
                                     <div className="text-center">
                                         <Link to="/">
-                                            <span><img src="images/logo-black.png" alt="" height="22" /></span>
+                                            <span><img src="/images/logo-black.png" alt="" height="22" /></span>
                                         </Link>
                                     </div>
                                     <Card>
+
                                         <CardBody className="p-4 position-relative">
-                                            { /* prePreLoaderWidget */}
+                                            { /* preloader */}
                                             {this.props.loading && <Loader />}
 
                                             <div className="text-center mb-4">
-                                                <h4 className="text-uppercase mt-0">Entre Aqui</h4>
+                                                <h4 className="text-uppercase mt-0">Registre-se</h4>
                                             </div>
 
                                             {this.props.error && <Alert color="danger" isOpen={this.props.error ? true : false}>
@@ -81,19 +92,19 @@ class Login extends Component {
                                             </Alert>}
 
                                             <AvForm onValidSubmit={this.handleValidSubmit}>
-                                                <AvField name="username" label="Email" placeholder="Entre seu email" value={this.state.username} required />
+                                                <AvField name="fullname" label="Nome Completo" placeholder="Entre seu nome" required />
 
-                                                <AvGroup className="mb-3">
+                                                <AvField type="email" name="email" label="Email" placeholder="Entre seu email" required />
+
+                                                <AvGroup>
                                                     <Label for="password">Senha</Label>
-                                                    <AvInput type="password" name="password" id="password" placeholder="Entre sua senha" value={this.state.password} required />
+                                                    <AvInput type="password" name="password" id="password" placeholder="Enter your password" required />
                                                     <AvFeedback>Isso é inválido.</AvFeedback>
                                                 </AvGroup>
 
-                                                <FormGroup>
-                                                    <Button color="primary" className="btn-block">Entre Aqui</Button>
+                                                <FormGroup className="mt-3 mb-0 text-center">
+                                                    <Button color="primary" className="btn-block">Enviar</Button>
                                                 </FormGroup>
-
-                                                <p><strong>Email:</strong> test &nbsp;&nbsp; <strong>Senha:</strong> test</p>
                                             </AvForm>
                                         </CardBody>
                                     </Card>
@@ -102,14 +113,14 @@ class Login extends Component {
 
                             <Row className="mt-1">
                                 <Col className="col-12 text-center">
-                                    <p><Link to="/forgot-password" className="text-muted ml-1"><i className="fa fa-lock mr-1"></i>Esqueceu sua senha?</Link></p>
-                                    <p className="text-muted">Não tem uma conta? <Link to="/register" className="text-dark ml-1"><b>Registre-se Aqui</b></Link></p>
+                                    <p className="text-muted">Já tem uma conta? <Link to="/login" className="text-dark ml-1"><b>Acesse Aqui.</b></Link></p>
                                 </Col>
                             </Row>
-
                         </Container>
                     </div>
-                </React.Fragment>
+                </React.Fragment>}
+
+            </React.Fragment>
         )
     }
 }
@@ -120,4 +131,4 @@ const mapStateToProps = (state) => {
     return { user, loading, error };
 };
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(mapStateToProps, { registerUser })(Register);

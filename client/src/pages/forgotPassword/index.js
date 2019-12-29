@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom'
 
-import { Container, Row, Col, Card, CardBody, Label, FormGroup, Button, Alert } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
+import { Container, Row, Col, Card, CardBody, FormGroup, Button, Alert } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-import { loginUser } from '../../redux/actions';
 import { isUserAuthenticated } from '../../services/authUtils';
 import Loader from '../../global_components/Loader';
 
-class Login extends Component {
+class ForgetPassword extends Component {
     _isMounted = false;
 
     constructor(props) {
         super(props);
 
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
+        this.onDismiss = this.onDismiss.bind(this);
         this.state = {
-            username: 'test',
-            password: 'test'
+            passwordResetSuccessful: false,
+            isLoading: false
         }
     }
 
@@ -33,10 +33,25 @@ class Login extends Component {
     }
 
     /**
+     * On error dismiss
+     */
+    onDismiss() {
+        this.setState({ passwordResetSuccessful: false });
+    }
+
+    /**
      * Handles the submit
      */
     handleValidSubmit = (event, values) => {
-        this.props.loginUser(values.username, values.password, this.props.history);
+        console.log(values);
+
+        this.setState({ isLoading: true });
+
+        // You can make actual api call to register here
+
+        window.setTimeout(() => {
+            this.setState({ isLoading: false, passwordResetSuccessful: true });
+        }, 1000)
     }
 
 
@@ -51,8 +66,13 @@ class Login extends Component {
     }
 
     render() {
+        const isAuthTokenValid = isUserAuthenticated();
         return (
             <React.Fragment>
+
+                {this.renderRedirectToRoot()}
+
+                {(this._isMounted || !isAuthTokenValid) && <React.Fragment>
 
                     <div className="home-btn d-none d-sm-block">
                         <Link to="/"><i className="fas fa-home h2 text-dark"></i></Link>
@@ -67,33 +87,26 @@ class Login extends Component {
                                             <span><img src="images/logo-black.png" alt="" height="22" /></span>
                                         </Link>
                                     </div>
-                                    <Card>
+                                    <Card >
                                         <CardBody className="p-4 position-relative">
-                                            { /* prePreLoaderWidget */}
-                                            {this.props.loading && <Loader />}
+                                            { /* preloader */}
+                                            {this.state.isLoading && <Loader />}
 
                                             <div className="text-center mb-4">
-                                                <h4 className="text-uppercase mt-0">Entre Aqui</h4>
+                                                <h4 className="text-uppercase mt-0 mb-3">Redefinir Senha</h4>
+                                                <p className="text-muted mb-0 font-13">Entre seu email e vamos te envar uma mensagem com instruções para redefinir sua senha.</p>
                                             </div>
 
-                                            {this.props.error && <Alert color="danger" isOpen={this.props.error ? true : false}>
-                                                <div>{this.props.error}</div>
-                                            </Alert>}
+                                            <Alert color="success" isOpen={this.state.passwordResetSuccessful} toggle={this.onDismiss}>
+                                                Enviamos uma mensagem no seu email contendo o link para resetar sua senha.
+                                            </Alert>
 
                                             <AvForm onValidSubmit={this.handleValidSubmit}>
-                                                <AvField name="username" label="Email" placeholder="Entre seu email" value={this.state.username} required />
+                                                <AvField type="email" name="email" label="Email" placeholder="Entre seu email." required />
 
-                                                <AvGroup className="mb-3">
-                                                    <Label for="password">Senha</Label>
-                                                    <AvInput type="password" name="password" id="password" placeholder="Entre sua senha" value={this.state.password} required />
-                                                    <AvFeedback>Isso é inválido.</AvFeedback>
-                                                </AvGroup>
-
-                                                <FormGroup>
-                                                    <Button color="primary" className="btn-block">Entre Aqui</Button>
+                                                <FormGroup className="mb-0 text-center">
+                                                    <Button color="primary" className="btn-block">Redefinir Senha</Button>
                                                 </FormGroup>
-
-                                                <p><strong>Email:</strong> test &nbsp;&nbsp; <strong>Senha:</strong> test</p>
                                             </AvForm>
                                         </CardBody>
                                     </Card>
@@ -102,22 +115,15 @@ class Login extends Component {
 
                             <Row className="mt-1">
                                 <Col className="col-12 text-center">
-                                    <p><Link to="/forgot-password" className="text-muted ml-1"><i className="fa fa-lock mr-1"></i>Esqueceu sua senha?</Link></p>
-                                    <p className="text-muted">Não tem uma conta? <Link to="/register" className="text-dark ml-1"><b>Registre-se Aqui</b></Link></p>
+                                    <p className="text-muted">Voltar para <Link to="/login" className="text-dark ml-1"><b>Login</b>.</Link></p>
                                 </Col>
                             </Row>
-
                         </Container>
                     </div>
-                </React.Fragment>
+                </React.Fragment>}
+            </React.Fragment>
         )
     }
 }
 
-
-const mapStateToProps = (state) => {
-    const { user, loading, error } = state.Auth;
-    return { user, loading, error };
-};
-
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect()(ForgetPassword);

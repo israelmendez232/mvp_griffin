@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import NavBar from './local_components/navBar';
-import HomeStart from './local_components/homeStart';
-import FeatureSection from './local_components/featureSection';
-import ServiceSection from './local_components/serviceSection';
-import ClientsSection from './local_components/clientsSection';
-import CounterSection from './local_components/counterSection';
-import PricingSection from './local_components/pricingSection';
-import ContactSection from './local_components/contactSection';
-import Footer from './local_components/footer';
-import BackToTop from './local_components/backToTopElement';
+import NavBar from './localComponents/navBar';
+import HomeStart from './localComponents/homeStart';
+import FeatureSection from './localComponents/featureSection';
+import ServiceSection from './localComponents/serviceSection';
+import ClientsSection from './localComponents/clientsSection';
+import CounterSection from './localComponents/counterSection';
+import PricingSection from './localComponents/pricingSection';
+import ContactSection from './localComponents/contactSection';
+import Footer from './localComponents/footer';
+import BackToTop from './localComponents/backToTopElement';
 
 class HomePage extends Component {
     render() {
