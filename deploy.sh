@@ -5,6 +5,7 @@
 
 # !/bin/bash
 ## SETTING UP THE ENVIROMENT:
+echo "===> Starting with the CD process."
 forever stopall
 npm install -g npm@latest
 npm install -g forever
@@ -17,10 +18,10 @@ npm install
 npm run-script build
 rm -r ../server/src/build
 mv -f build ../server/src/
-rm -r build
 
 ## RUN THE SERVER
 cd ../server/
 npm install
 npm run server
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 4000
+echo "===> Done with the CD process!"
