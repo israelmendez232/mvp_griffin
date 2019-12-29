@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx nodemon --exec npx babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "forever start -c \"npm start\""
+    "server": "forever start --minUptime 5000 --spinSleepTime 2000 -c \"npm start\" ."
   },
   "keywords": [
     "React",
