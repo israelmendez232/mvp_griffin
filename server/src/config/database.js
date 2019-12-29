@@ -2,10 +2,10 @@ const config = require('../../../config.json');
 
 module.exports = {
     dialect: 'postgres',
-    host: config.db_dev.host,
-    username: config.db_dev.user,
-    password: config.db_dev.pass,
-    database: config.db_dev.db,
+    host: config.db.host,
+    username: config.db.user,
+    password: config.db.pass,
+    database: config.db.db,
     define: {
         timestamp: true,
         underscore: true

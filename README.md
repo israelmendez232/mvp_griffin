@@ -12,3 +12,8 @@ Small project using Adonis, Node and React.
 - [ ] Connect the README for each;
 - [ ] Present how the unit and other tests are made;
 - [ ]
+
+## Network and Gitpod
+If you're having problems while connecting on the machines in cloud. Use command bellow in the terminal to whitelist your IP:
+`$ curl http://checkip.amazonaws.com/`
+

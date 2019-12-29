@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.use(routes);
 
-// Ending and Serving
+// Ending and Serving the Files
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/build/index.html'));
 });

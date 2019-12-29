@@ -106,3 +106,4 @@ dist
 # Others
 config.cfg
 config.json
+ec2/
