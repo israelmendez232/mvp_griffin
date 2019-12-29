@@ -16,8 +16,8 @@ export default class FeatureSection extends Component {
                                     <i className="pe-7s-notebook h1" />
                                 </div>
                                 <div className="d-none d-lg-block mr-4">
-                                    <h5>Quality Code</h5>
-                                    <p>At vero eos et accusam et</p>
+                                    <h5>Canais e Listas</h5>
+                                    <p>Converse com seus Contatos.</p>
                                 </div>
                                 </div>
                             </a>
@@ -29,8 +29,8 @@ export default class FeatureSection extends Component {
                                     <i className="pe-7s-edit h1" />
                                 </div>
                                 <div className="d-none d-lg-block mr-4">
-                                    <h5>Easy to customize</h5>
-                                    <p>Sed ut unde iste error sit</p>
+                                    <h5>Conteúdo</h5>
+                                    <p>Organize e Envie com Facilidade.</p>
                                 </div>
                                 </div>
                             </a>
@@ -41,8 +41,8 @@ export default class FeatureSection extends Component {
                                 <i className="pe-7s-headphones h1" />
                                 </div>
                                 <div className="d-none d-lg-block mr-4">
-                                <h5>Awesome Support</h5>
-                                <p>It will be as simple as fact</p>
+                                <h5>Dashboard</h5>
+                                <p>Análise e Extraia os Dados.</p>
                                 </div>
                             </a>
                             </li>

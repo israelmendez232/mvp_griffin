@@ -9,9 +9,9 @@ export default class ContactSection extends Component {
                     <div className="row justify-content-center">
                         <div className="col-lg-6">
                         <div className="title text-center mb-5">
-                            <h6 className="text-primary small-title">Contact</h6>
-                            <h4>Have any Questions ?</h4>
-                            <p className="text-muted">At solmen va esser far uniform grammatica.</p>
+                            <h6 className="text-primary small-title">Contato</h6>
+                            <h4>Dúvidas e Sugestões?</h4>
+                            <p className="text-muted">Entre em contato aqui que conversaremos com você assim que pudermos.</p>
                         </div>
                         </div>
                     </div>
@@ -19,24 +19,15 @@ export default class ContactSection extends Component {
                     <div className="row">
                         <div className="col-lg-4">
                         <div className="get-in-touch">
-                            <h5>Get in touch</h5>
-                            <p className="text-muted mb-5">At solmen va esser necessi far</p>
+                            <h5>Entre em contato</h5>
+                            <p className="text-muted mb-5">Confira nossas formas de acesso aqui:</p>
                             <div className="mb-3">
                             <div className="get-touch-icon float-left mr-3">
                                 <i className="pe-7s-mail h2 text-primary" />
                             </div>
                             <div className="overflow-hidden">
                                 <h5 className="font-16 mb-0">E-mail</h5>
-                                <p className="text-muted">example@abc.com</p>
-                            </div>
-                            </div>
-                            <div className="mb-3">
-                            <div className="get-touch-icon float-left mr-3">
-                                <i className="pe-7s-phone h2 text-primary" />
-                            </div>
-                            <div className="overflow-hidden">
-                                <h5 className="font-16 mb-0">Phone</h5>
-                                <p className="text-muted">012-345-6789</p>
+                                <p className="text-muted">contato@griffingram.com.br</p>
                             </div>
                             </div>
                             <div className="mb-2">
@@ -44,8 +35,8 @@ export default class ContactSection extends Component {
                                 <i className="pe-7s-map-marker h2 text-primary" />
                             </div>
                             <div className="overflow-hidden">
-                                <h5 className="font-16 mb-0">Address</h5>
-                                <p className="text-muted">20 Rollins Road Cotesfield, NE 68829</p>
+                                <h5 className="font-16 mb-0">Endereço</h5>
+                                <p className="text-muted">R. Gomes de Carvalho, 911 - Vila Olímpia, São Paulo - SP, 04547-003.</p>
                             </div>
                             </div>
                         </div>
@@ -57,14 +48,14 @@ export default class ContactSection extends Component {
                             <div className="row">
                                 <div className="col-lg-6">
                                 <div className="form-group">
-                                    <label htmlFor="name">Name</label>
-                                    <input name="name" id="name" type="text" className="form-control" placeholder="Enter your name..." />
+                                    <label htmlFor="name">Nome</label>
+                                    <input name="name" id="name" type="text" className="form-control" placeholder="Entre seu nome..." />
                                 </div>
                                 </div>
                                 <div className="col-lg-6">
                                 <div className="form-group">
-                                    <label htmlFor="email">Email address</label>
-                                    <input name="email" id="email" type="email" className="form-control" placeholder="Enter your email..." />
+                                    <label htmlFor="email">Email</label>
+                                    <input name="email" id="email" type="email" className="form-control" placeholder="Entre seu e-mail..." />
                                 </div>
                                 </div>
                             </div>
@@ -72,8 +63,8 @@ export default class ContactSection extends Component {
                             <div className="row">
                                 <div className="col-lg-12">
                                 <div className="form-group">
-                                    <label htmlFor="subject">Subject</label>
-                                    <input name="subject" id="subject" type="text" className="form-control" placeholder="Enter Subject..." />
+                                    <label htmlFor="subject">Assunto</label>
+                                    <input name="subject" id="subject" type="text" className="form-control" placeholder="Coloque o Assunto..." />
                                 </div>
                                 </div>
                             </div>
@@ -81,15 +72,15 @@ export default class ContactSection extends Component {
                             <div className="row">
                                 <div className="col-lg-12">
                                 <div className="form-group">
-                                    <label htmlFor="comments">Message</label>
-                                    <textarea name="comments" id="comments" rows={4} className="form-control" placeholder="Enter your message..." defaultValue={""} />
+                                    <label htmlFor="comments">Mensagem</label>
+                                    <textarea name="comments" id="comments" rows={4} className="form-control" placeholder="Coloque a mensagem..." defaultValue={""} />
                                 </div>
                                 </div>
                             </div>
                             {/* end row */}
                             <div className="row">
                                 <div className="col-lg-12 text-right">
-                                <input type="submit" id="submit" name="send" className="submitBnt btn btn-custom" defaultValue="Send Message" />
+                                <input type="submit" id="submit" name="send" className="submitBnt btn btn-custom" defaultValue="Enviar" />
                                 <div id="simple-msg" />
                                 </div>
                             </div>

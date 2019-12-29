@@ -9,9 +9,9 @@ export default class NavBar extends Component {
                     <div className="row justify-content-center">
                         <div className="col-lg-6">
                         <div className="title text-center mb-4">
-                            <h6 className="text-primary small-title">Services</h6>
-                            <h4>What we do</h4>
-                            <p className="text-muted">At solmen va esser far uniform grammatica.</p>
+                            <h6 className="text-primary small-title">Serviços</h6>
+                            <h4>O que fazemos</h4>
+                            <p className="text-muted">Confira em detalhes o que a GriffinGram oferece:</p>
                         </div>
                         </div>
                     </div>
