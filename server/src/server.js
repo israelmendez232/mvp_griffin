@@ -1,11 +1,14 @@
 import express from 'express';
 import routes from './routes/routes';
 import path from 'path';
+import helmet from 'helmet';
 require('./database');
 
 // Setup
 const app = express();
 const PORT = 4000;
+
+app.use(helmet()) // Security library for HTTP requests.
 
 app.use(express.static(path.join(__dirname, '/build')));
 app.use(express.json());

@@ -17,3 +17,8 @@ Small project using Adonis, Node and React.
 If you're having problems while connecting on the machines in cloud. Use command bellow in the terminal to whitelist your IP:
 `$ curl http://checkip.amazonaws.com/`
 
+## Sequelize
+To undo modifications:
+`sequelize db:migrate:undo`
+And to processed with the modifications:
+`sequelize db:migrate`

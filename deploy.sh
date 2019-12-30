@@ -20,6 +20,7 @@ mv -f build ../server/src/
 ## RUN THE SERVER
 cd ../server/
 npm install
+npx sequelize db:migrate
 npm run server
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 4000
 echo "===> Done with the CD process!"
