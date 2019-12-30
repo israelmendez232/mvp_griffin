@@ -23,14 +23,13 @@ class ForgetPassword extends Component {
     }
 
     componentDidMount() {
-        this._isMounted = true;
         document.body.classList.add('authentication-bg');
     }
 
     componentWillUnmount() {
-        this._isMounted = false;
         document.body.classList.remove('authentication-bg');
     }
+    
 
     /**
      * On error dismiss
@@ -84,7 +83,7 @@ class ForgetPassword extends Component {
                                 <Col md={8} lg={6} xl={5} >
                                     <div className="text-center">
                                         <Link to="/">
-                                            <span><img src="images/logo-black.png" alt="" height="22" /></span>
+                                            <span><img  className="mt-2 mb-4" src="/images/logo-black.png" alt="" height={60} /></span>
                                         </Link>
                                     </div>
                                     <Card >

@@ -18,13 +18,11 @@ class Confirm extends Component {
     componentDidMount() {
         this._isMounted = true;
         document.body.classList.add('authentication-bg');
-        document.body.classList.add('authentication-bg-pattern');
     }
 
     componentWillUnmount() {
         this._isMounted = false;
         document.body.classList.remove('authentication-bg');
-        document.body.classList.remove('authentication-bg-pattern');
     }
 
     /**
@@ -52,7 +50,7 @@ class Confirm extends Component {
                                 <Col md={8} lg={6} xl={5} >
                                     <div className="text-center">
                                         <Link to="/">
-                                            <span><img src="images/logo-black.png" alt="" height="22" /></span>
+                                            <span><img  className="mt-2 mb-4" src="/images/logo-black.png" alt="" height={60} /></span>
                                         </Link>
                                     </div>
 

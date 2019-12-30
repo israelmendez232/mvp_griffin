@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 class page404 extends Component {
+    componentDidMount() {
+        document.body.classList.add('authentication-bg');
+    }
+
+    componentWillUnmount() {
+        document.body.classList.remove('authentication-bg');
+    }
+    
     render() {
         return (
             <>
@@ -10,8 +18,8 @@ class page404 extends Component {
                         <div className="row justify-content-center">
                         <div className="col-md-8 col-lg-6 col-xl-5">
                             <div className="text-center">
-                            <a href="index.html">
-                                <span><img src="assets/images/logo-dark.png" alt="" height={22} /></span>
+                            <a href="/">
+                                <span><img  className="mt-2 mb-4" src="/images/logo-black.png" alt="" height={60} /></span>
                             </a>
                             </div>
                             <div className="card">

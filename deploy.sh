@@ -9,8 +9,6 @@ echo "===> Starting with the CD process."
 forever stopall
 npm install -g npm@latest
 npm install -g forever
-cd mvp_griffin/
-git pull origin master
 
 ## GETTING THE FRONT READY
 cd client/

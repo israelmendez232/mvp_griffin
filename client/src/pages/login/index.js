@@ -1,123 +1,74 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom'
-
-import { Container, Row, Col, Card, CardBody, Label, FormGroup, Button, Alert } from 'reactstrap';
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-
-import { loginUser } from '../../redux/actions';
-import { isUserAuthenticated } from '../../services/authUtils';
-import Loader from '../../global_components/Loader';
 
 class Login extends Component {
-    _isMounted = false;
-
-    constructor(props) {
-        super(props);
-
-        this.handleValidSubmit = this.handleValidSubmit.bind(this);
-        this.state = {
-            username: 'test',
-            password: 'test'
-        }
-    }
-
     componentDidMount() {
-        this._isMounted = true;
         document.body.classList.add('authentication-bg');
     }
 
     componentWillUnmount() {
-        this._isMounted = false;
         document.body.classList.remove('authentication-bg');
-    }
-
-    /**
-     * Handles the submit
-     */
-    handleValidSubmit = (event, values) => {
-        this.props.loginUser(values.username, values.password, this.props.history);
-    }
-
-
-    /**
-     * Redirect to root
-     */
-    renderRedirectToRoot = () => {
-        const isAuthTokenValid = isUserAuthenticated();
-        if (isAuthTokenValid) {
-            return <Redirect to='/' />
-        }
     }
 
     render() {
         return (
-            <React.Fragment>
-
+            <>
+                {/* <div className="authentication-bg"> */}
                     <div className="home-btn d-none d-sm-block">
-                        <Link to="/"><i className="fas fa-home h2 text-dark"></i></Link>
+                    <a href="/"><i className="fas fa-home h2 text-dark" /></a>
                     </div>
-
                     <div className="account-pages mt-5 mb-5">
-                        <Container>
-                            <Row className="justify-content-center">
-                                <Col md={8} lg={6} xl={5} >
-                                    <div className="text-center">
-                                        <Link to="/">
-                                            <span><img src="images/logo-black.png" alt="" height="22" /></span>
-                                        </Link>
+                    <div className="container">
+                        <div className="row justify-content-center">
+                        <div className="col-md-8 col-lg-6 col-xl-5">
+                            <div className="text-center">
+                            <a href="/">
+                                <span><img  className="mt-2 mb-4" src="/images/logo-black.png" alt="" height={60} /></span>
+                            </a>
+                            </div>
+                            <div className="card">
+                            <div className="card-body p-4">
+                                <div className="text-center mb-4">
+                                <h4 className="text-uppercase mt-0">Login</h4>
+                                </div>
+                                <form action="#">
+                                <div className="form-group mb-3">
+                                    <label htmlFor="emailaddress">E-mail</label>
+                                    <input className="form-control" type="email" id="emailaddress" required placeholder="Entre seu e-mail." />
+                                </div>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="password">Senha</label>
+                                    <input className="form-control" type="password" required id="password" placeholder="Entre sua senha." />
+                                </div>
+                                <div className="form-group mb-3">
+                                    <div className="custom-control custom-checkbox">
+                                    <input type="checkbox" className="custom-control-input" id="checkbox-signin" defaultChecked />
+                                    <label className="custom-control-label" htmlFor="checkbox-signin">Lembrar-se de Mim</label>
                                     </div>
-                                    <Card>
-                                        <CardBody className="p-4 position-relative">
-                                            { /* prePreLoaderWidget */}
-                                            {this.props.loading && <Loader />}
-
-                                            <div className="text-center mb-4">
-                                                <h4 className="text-uppercase mt-0">Entre Aqui</h4>
-                                            </div>
-
-                                            {this.props.error && <Alert color="danger" isOpen={this.props.error ? true : false}>
-                                                <div>{this.props.error}</div>
-                                            </Alert>}
-
-                                            <AvForm onValidSubmit={this.handleValidSubmit}>
-                                                <AvField name="username" label="Email" placeholder="Entre seu email" value={this.state.username} required />
-
-                                                <AvGroup className="mb-3">
-                                                    <Label for="password">Senha</Label>
-                                                    <AvInput type="password" name="password" id="password" placeholder="Entre sua senha" value={this.state.password} required />
-                                                    <AvFeedback>Isso é inválido.</AvFeedback>
-                                                </AvGroup>
-
-                                                <FormGroup>
-                                                    <Button color="primary" className="btn-block">Entre Aqui</Button>
-                                                </FormGroup>
-
-                                                <p><strong>Email:</strong> test &nbsp;&nbsp; <strong>Senha:</strong> test</p>
-                                            </AvForm>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
-
-                            <Row className="mt-1">
-                                <Col className="col-12 text-center">
-                                    <p><Link to="/forgot-password" className="text-muted ml-1"><i className="fa fa-lock mr-1"></i>Esqueceu sua senha?</Link></p>
-                                    <p className="text-muted">Não tem uma conta? <Link to="/register" className="text-dark ml-1"><b>Registre-se Aqui</b></Link></p>
-                                </Col>
-                            </Row>
-
-                        </Container>
+                                </div>
+                                <div className="form-group mb-0 text-center">
+                                    <button className="btn btn-primary btn-block" type="submit"> Entrar </button>
+                                </div>
+                                </form>
+                            </div> {/* end card-body */}
+                            </div>
+                            {/* end card */}
+                            <div className="row mt-3">
+                            <div className="col-12 text-center">
+                                <p> <a href="/forgot-password" className="text-muted ml-1"><i className="fa fa-lock mr-1" />Esqueceu sua Senha?</a></p>
+                                <p className="text-muted">Não tem conta? <a href="/register" className="text-dark ml-1"><b>Registre-se</b>.</a></p>
+                            </div> {/* end col */}
+                            </div>
+                            {/* end row */}
+                        </div> {/* end col */}
+                        </div>
+                        {/* end row */}
                     </div>
-                </React.Fragment>
+                    {/* end container */}
+                    </div>
+                {/* </div> */}
+            </>
         )
     }
 }
 
-
-const mapStateToProps = (state) => {
-    const { user, loading, error } = state.Auth;
-    return { user, loading, error };
-};
-
-export default connect(mapStateToProps, { loginUser })(Login);
+export default Login;

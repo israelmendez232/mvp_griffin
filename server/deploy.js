@@ -17,7 +17,7 @@ conn.on('ready', function() {
     }).on('data', function(data) {
       console.log('OUTPUT: ' + data);
     });
-    stream.end('cd mvp_griffin/ \n sh deploy.sh \n exit \n'); // Start the script to deploy and finish the connection.
+    stream.end('cd mvp_griffin/ \n git pull origin master \n sh deploy.sh \n exit \n'); // Start the script to deploy and finish the connection.
   });
 }).connect({
   host: config.deploy.host,

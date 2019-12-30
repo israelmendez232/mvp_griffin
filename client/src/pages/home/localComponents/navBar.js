@@ -7,7 +7,7 @@ export default class NavBar extends Component {
                 <nav className="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
                     <div className="container-fluid">
                         {/* LOGO */}
-                        <a className="logo text-uppercase" href="index.html">
+                        <a className="logo text-uppercase" href="/">
                         <img src="images/logo-white.png" alt="GriffinGram" className="logo-light" />
                         <img src="images/logo-black.png" alt="GriffinGram" className="logo-dark" />
                         </a>

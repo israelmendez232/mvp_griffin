@@ -12,6 +12,7 @@
 11.Cta
 12.footer
 13.Responsive
+14.Custom
 ********************************/
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Karla:400,700");
 /*******************
@@ -610,3 +611,28 @@ p {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+/******************
+    14.Custom
+*******************/
+body.authentication-bg {
+    background-color: #ebeff2;
+}
+
+.home-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+}
+
+.logout-icon {
+    width: 140px;
+}
+
+.text-error {
+    color: #71b6f9;
+    text-shadow: rgba(#71b6f9, 0.3) 5px 1px, rgba(#71b6f9, 0.2) 10px 3px;
+    font-size: 60px;
+    line-height: 90px;
+    font-family: 'Karla', sans-serif;
+}
