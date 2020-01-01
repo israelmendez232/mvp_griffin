@@ -13,9 +13,12 @@ function encrypt(text, config) {
     return { salt: salt.toString('hex'), hashPass: encrypted.toString('hex') };
 }
 
-function decryptPass(password, config) {
-    let salt = Buffer.from(text.salt, 'hex');
-    let encryptedText = Buffer.from(text.encryptedData, 'hex');
+function decryptPass(password, salty, config) {
+    const salt = Buffer.from(salty, 'hex');
+    const encryptedText = Buffer.from(password, 'hex');
+    const key = Buffer.from(config.hash.key, 'utf8');
+    const algorithm = config.hash.algorithm;
+
     let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), salt);
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);
@@ -70,7 +73,15 @@ module.exports = {
         if (!user) { 
             return res.status(400).json({ error: 'User not found' }); 
         } else {
-            return res.status(200).json(user); 
+            const pass = await decryptPass(user.hashPass, user.salt, config);
+            return res.status(200).json({ 
+                id: user.id, 
+                fullName: user.fullName, 
+                email: user.email, 
+                password: pass,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt
+            }); 
         }
     },
 

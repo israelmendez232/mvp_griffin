@@ -1,4 +1,16 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+function login(email, password) {
+    axios.get(`/user?email=${email}`)
+    .then((response) => {
+        // handle success
+        console.log(response);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
 
 class Login extends Component {
     componentDidMount() {
@@ -8,6 +20,8 @@ class Login extends Component {
     componentWillUnmount() {
         document.body.classList.remove('authentication-bg');
     }
+
+
 
     render() {
         return (
