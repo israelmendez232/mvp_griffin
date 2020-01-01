@@ -21,14 +21,19 @@ module.exports = {
         fullName: {
             type: Sequelize.STRING,
             allowNull: false,
+            isAlpha: true,
             validate: {
                 notEmpty: {
                     msg: "This field can't be empty."
+                },
+                isAlpha: {
+                    msg: "This field have to be only with letters."
                 }
             }
         },
         email: {
             type: Sequelize.STRING,
+            unique: true,
             allowNull: false,
             validate: {
                 notEmpty: {
@@ -49,6 +54,19 @@ module.exports = {
                 len: {
                     args: [6, 20],
                     msg: "This field has to be between 6 and 20 characters."
+                }
+            }
+        },
+        salt: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                notEmpty: {
+                    msg: "This field can't be empty."
+                },
+                len: {
+                    args: [16],
+                    msg: "This field has to be with 16 characters."
                 }
             }
         },

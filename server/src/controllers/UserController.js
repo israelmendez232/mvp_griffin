@@ -10,7 +10,7 @@ function encrypt(text, config) {
     let cipher = crypto.createCipheriv(algorithm, key, salt);
     let encrypted = cipher.update(text);
     encrypted += cipher.final('hex');
-    return { salt: salt.toString('hex'), password: encrypted.toString('hex') };
+    return { salt: salt.toString('hex'), hashPass: encrypted.toString('hex') };
 }
 
 function decryptPass(password, config) {
@@ -30,19 +30,19 @@ module.exports = {
     },
 
     async create(req, res) {
-        const { name, email } = req.body;
+        const { fullName, email, password } = req.body;
 
-        const { salt, password } = encrypt(req.body.password, config);
+        const { salt, hashPass } = encrypt(password, config);
 
-        console.log(salt, password);
+        console.log(salt, hashPass);
 
-        const user = await User.create({ name, email, password });
+        const user = await User.create({ fullName, email, hashPass, salt });
 
         return res.json(user);
     },
 
     async update(req, res) {
-        const { name, email } = req.body;
+        const { fullName, email } = req.body;
         const user = await User.findOne({
             where: {
                 email: email,
@@ -53,7 +53,7 @@ module.exports = {
         if (!user) { 
             return res.status(400).json({ error: 'User not found' }); 
         } else {
-            await user.update({ name, email });
+            await user.update({ fullName, email });
             return res.status(200).json({ message: 'User UPDATED successfully.', user: user }); 
         }
     },
